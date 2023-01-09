@@ -1,24 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { useEffect } from "react";
+import Facebook from "./modules/Views";
+import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
+  useEffect(() => {
+    document.title = "Peter Johns | Facebook";
+  }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Facebook />
+    // <BrowserRouter>
+    //   <Routes>
+    //     <Route path="/" element={<Layout />}></Route>
+    //   </Routes>
+    // </BrowserRouter>
   );
 }
 

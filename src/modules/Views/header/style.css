@@ -1,0 +1,13 @@
+.facebook-header-wrapper {
+  height: 55px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #e3e3e3;
+  box-shadow: 0px 0px 2px #e3e3e3;
+}
+
+.facebook-logo {
+  height: 23px;
+  width: auto;
+  object-fit: contain;
+}
