@@ -1,5 +1,5 @@
 .facebook-header-wrapper {
-  height: 55px;
+  height: 57px;
   display: flex;
   align-items: center;
   border-bottom: 1px solid #e3e3e3;
@@ -10,4 +10,58 @@
   height: 23px;
   width: auto;
   object-fit: contain;
+}
+
+.facebook-header-row {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.facebook-header-icons {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: end;
+}
+
+.facebook-header-icon-wrapper {
+  height: 40px;
+  width: 40px !important;
+  border-radius: 50%;
+  margin-left: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e3e3e3;
+  overflow: hidden;
+}
+
+.facebook-header-icon {
+  width: 17px;
+  height: 100%;
+  display: flex;
+}
+
+.facebook-header-user {
+  height: 40px;
+}
+
+.facebook-search-field-wrapper {
+  width: 88% !important;
+  margin: 0 auto;
+}
+
+.facebook-search-field {
+  border-radius: 0 40px 40px 0 !important;
+  border: none !important;
+  background: #f3f3f3 !important;
+  padding-left: 8px !important;
+}
+
+.facebooke-seach-icon {
+  border-radius: 40px 0 0 40px;
+  border: none;
+  background: #f3f3f3;
+  width: 35px;
+  display: flex;
+  padding-left: 18px;
 }
