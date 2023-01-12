@@ -4,6 +4,11 @@
   align-items: center;
   border-bottom: 1px solid #e3e3e3;
   box-shadow: 0px 0px 2px #e3e3e3;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  padding: 0px 20px;
 }
 
 .facebook-logo {
@@ -50,18 +55,16 @@
   margin: 0 auto;
 }
 
-.facebook-search-field {
-  border-radius: 0 40px 40px 0 !important;
-  border: none !important;
-  background: #f3f3f3 !important;
-  padding-left: 8px !important;
+.facebook-search-field .MuiInputBase-root {
+  border-radius: 30px;
+  overflow: hidden;
+  background-color: #f3f3f3;
+  border-color: #f3f3f3;
+  width: 67%;
+  margin: auto;
 }
 
 .facebooke-seach-icon {
-  border-radius: 40px 0 0 40px;
-  border: none;
-  background: #f3f3f3;
-  width: 35px;
-  display: flex;
-  padding-left: 18px;
+  width: 15px;
+  margin-right: 8px;
 }

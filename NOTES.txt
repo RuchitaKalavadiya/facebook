@@ -1,1 +1,15 @@
 - font awsome is not installed
+- dont know hoe to make container fluid
+- how to center one col element
+
+
+[core]
+	repositoryformatversion = 0
+	filemode = false
+	bare = false
+	logallrefupdates = true
+	symlinks = false
+	ignorecase = true
+[remote "origin"]
+	url = https://github.com/RuchitaKalavadiya/facebook.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
