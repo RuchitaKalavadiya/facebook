@@ -13,7 +13,7 @@ export default function Header() {
           <Grid item lg={3} alignItems={"center"} display={"flex"}>
             <img src={Facebook} className="facebook-logo" />
           </Grid>
-          <Grid lg justifyContent={"right"} display={"flex"}>
+          <Grid item lg justifyContent={"right"} display={"flex"}>
             <Search />
           </Grid>
           <Grid item lg={3} justifyContent={"right"} display={"flex"}>
