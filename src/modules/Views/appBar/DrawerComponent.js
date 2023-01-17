@@ -1,38 +1,53 @@
-import { useState } from "react";
-import "./style.css";
-import Divider from "@mui/material/Divider";
-import { styled } from "@mui/material/styles";
-import MuiDrawer from "@mui/material/Drawer";
-import SidebarList from "./SideBarList";
+import SidebarList from '../appBar/SideBarList'
+import { styled } from '@mui/material/styles';
+import MuiDrawer from '@mui/material/Drawer';
+import { DrawerHeader } from './DrawerHeaderComponent';
 
 const drawerWidth = 240;
 
-const Drawer = styled(MuiDrawer, {
-  shouldForwardProp: (prop) => prop !== "open",
-})(() => ({
+const openedMixin = (theme) => ({
   width: drawerWidth,
-  whiteSpace: "nowrap",
-  boxSizing: "border-box",
-  position: "absolute",
-  color: "transparent",
-  top: "70px",
-}));
+  transition: theme.transitions.create('width', {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.enteringScreen,
+  }),
+  overflowX: 'hidden',
+});
 
-export default function DrawerComponent({ onMenuChange }) {
-  const [open, setOpen] = useState(false);
-  const [menuItem, setMenuItem] = useState("");
+const closedMixin = (theme) => ({
+  transition: theme.transitions.create('width', {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.leavingScreen,
+  }),
+  overflowX: 'hidden',
+  width: `calc(${theme.spacing(7)} + 1px)`,
+  [theme.breakpoints.up('sm')]: {
+    width: `calc(${theme.spacing(8)} + 1px)`,
+  },
+});
 
-  const onMenuItemClick = (menuItem) => {
-    console.log("menuItem", menuItem);
-    setMenuItem(menuItem);
-  };
-  onMenuChange(menuItem);
-  return (
-    <>
-      <Drawer variant="permanent" open={true} className="facebook-drawer">
-        <Divider />
-        <SidebarList open={open} onMenuItemClick={onMenuItemClick} />
-      </Drawer>
-    </>
-  );
+const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
+  ({ theme, open }) => ({
+    width: drawerWidth,
+    flexShrink: 0,
+    whiteSpace: 'nowrap',
+    boxSizing: 'border-box',
+    ...(open && {
+      ...openedMixin(theme),
+      '& .MuiDrawer-paper': openedMixin(theme),
+    }),
+    ...(!open && {
+      ...closedMixin(theme),
+      '& .MuiDrawer-paper': closedMixin(theme),
+    }),
+  }),
+);
+
+export default function DrawerComponent({ open }) {
+  return <>
+
+    <Drawer variant="permanent" open={open}>
+      <DrawerHeader />
+      <SidebarList />
+    </Drawer></>
 }
