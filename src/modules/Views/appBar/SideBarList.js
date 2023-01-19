@@ -2,9 +2,9 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import Divider from '@mui/material/Divider';
+import InboxIcon from "@mui/icons-material/MoveToInbox";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import Divider from "@mui/material/Divider";
 
 const sideBars = [
   [
@@ -35,13 +35,15 @@ export default function SidebarList({ open, onMenuItemClick }) {
             >
               <ListItemButton
                 sx={{
-                  justifyContent: "initial",
+                  paddingLeft: 0,
+                  paddingRight: 0,
+                  justifyContent: "center",
+                  textAlign: "center",
                 }}
               >
                 <ListItemIcon
                   sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : "auto",
+                    display: "flex",
                     justifyContent: "center",
                   }}
                 >

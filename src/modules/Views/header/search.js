@@ -10,7 +10,6 @@ export default function Search() {
       <TextField
         placeholder="Search Facebook"
         fullWidth
-        
         className="facebook-search-field"
         variant="outlined"
         id="outlined-basic"
@@ -22,6 +21,7 @@ export default function Search() {
             </div>
           ),
         }}
+        sx={{ outlineColor: "transparent" }}
       />
     </>
   );
