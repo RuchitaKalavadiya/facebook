@@ -1,8 +1,10 @@
 import { Box } from "@mui/system";
 import { useEffect } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Facebook from "./modules/Views";
 import Login from "./modules/Views/login";
 // import 'bootstrap/dist/css/bootstrap.min.css';
+
 function App() {
   useEffect(() => {
     document.title = "Peter Johns | Facebook";
@@ -18,14 +20,11 @@ function App() {
         bottom: 0,
       }}
     >
-      <Login />
-      {/* <Facebook /> */}
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/home" element={<Facebook />} />
+      </Routes>
     </Box>
-    // <BrowserRouter>
-    //   <Routes>
-    //     <Route path="/" element={<Layout />}></Route>
-    //   </Routes>
-    // </BrowserRouter>
   );
 }
 
