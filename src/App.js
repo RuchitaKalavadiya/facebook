@@ -1,8 +1,11 @@
 import { Box } from "@mui/system";
 import { useEffect } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Facebook from "./modules/Views";
+import { Route, Routes } from "react-router-dom";
 import Login from "./modules/Views/login";
+import User from "./modules/Views/User";
+import Home from "./modules/Views/home";
+import CreateStory from "./modules/Views/home/CreateStory";
+
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -21,8 +24,12 @@ function App() {
       }}
     >
       <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/home" element={<Facebook />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/stories">
+          <Route path="/create" element={<CreateStory />}></Route>
+        </Route>
+        <Route path="/user" element={<User />}></Route>
       </Routes>
     </Box>
   );

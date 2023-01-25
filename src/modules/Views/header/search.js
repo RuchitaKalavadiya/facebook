@@ -1,8 +1,6 @@
 import "./style.css";
-import Form from "react-bootstrap/Form";
-import InputGroup from "react-bootstrap/InputGroup";
 import { SearchLogo } from "../../../assets/headerLogo";
-import { TextField, InputAdornment } from "@mui/material";
+import { TextField } from "@mui/material";
 
 export default function Search() {
   return (

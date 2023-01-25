@@ -3,14 +3,14 @@ import { styled } from "@mui/material/styles";
 import MuiDrawer from "@mui/material/Drawer";
 import { DrawerHeader } from "./DrawerHeaderComponent";
 
-const drawerWidth = 240;
+const drawerWidth = 290;
 
 const drawerCommonStyle = {
   overflowX: "hidden",
   backgroundColor: "transparent",
   borderRight: "none",
-  paddingLeft: '18px',
-  paddingRight: '10px',
+  paddingLeft: "18px",
+  paddingRight: "10px",
 };
 
 const openedMixin = (theme) => ({
@@ -41,7 +41,7 @@ const Drawer = styled(MuiDrawer, {
   flexShrink: 0,
   whiteSpace: "nowrap",
   boxSizing: "border-box",
-  
+
   ...(open && {
     ...openedMixin(theme),
     "& .MuiDrawer-paper": openedMixin(theme),
@@ -52,13 +52,15 @@ const Drawer = styled(MuiDrawer, {
   }),
 }));
 
-export default function DrawerComponent({ open }) {
+const DrawerComponent = ({ children, open }) => {
   return (
     <>
       <Drawer variant="permanent" open={open}>
         <DrawerHeader />
-        <SidebarList />
+        {children}
       </Drawer>
     </>
   );
-}
+};
+
+export default DrawerComponent;

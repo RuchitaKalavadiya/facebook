@@ -38,7 +38,7 @@ export default function SidebarList({ open, onMenuItemClick }) {
                   paddingLeft: 0,
                   paddingRight: 0,
                   justifyContent: "center",
-                  textAlign: "center",
+                  textAlign: "start",
                 }}
               >
                 <ListItemIcon

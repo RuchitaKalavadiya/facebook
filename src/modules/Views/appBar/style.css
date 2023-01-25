@@ -1,3 +1,7 @@
 .facebook-drawer {
   margin-top: 60px;
 }
+
+.facebook-header-logo {
+  cursor: pointer;
+}

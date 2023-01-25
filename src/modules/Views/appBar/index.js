@@ -5,6 +5,8 @@ import Facebook from "../../../assets/facebook.png";
 import { Message, Notification } from "../../../assets/headerLogo.jsx";
 import user from "../../../assets/user.jpg";
 import Search from "../header/search";
+import { useNavigate } from "react-router-dom";
+import "./style.css";
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== "open",
@@ -17,7 +19,6 @@ const AppBar = styled(MuiAppBar, {
   }),
   color: "darkslategray",
   minHeight: 59,
-  elevation: 1,
   ...(open && {
     width: "100%",
     transition: theme.transitions.create(["width", "margin"], {
@@ -27,10 +28,15 @@ const AppBar = styled(MuiAppBar, {
   }),
 }));
 
-export default function AppBarComponent({ handleDrawer, open }) {
+export default function AppBarComponent({ handleDrawer, open, hideExtras }) {
+  let history = useNavigate();
+
+  const onLogoClick = () => {
+    history("/");
+  };
   return (
     <>
-      <AppBar position="fixed" open={open} elevation="1">
+      <AppBar position="fixed" open={open} elevation={hideExtras ? "0" : "1"}>
         <Toolbar>
           <IconButton
             color="#000"
@@ -43,13 +49,24 @@ export default function AppBarComponent({ handleDrawer, open }) {
           >
             <MenuIcon />
           </IconButton>
-          <Grid container>
-            <Grid item lg={3} alignItems={"center"} display={"flex"}>
+          <Grid container justifyContent={"space-between"}>
+            <Grid
+              item
+              lg={3}
+              alignItems={"center"}
+              display={"flex"}
+              className="facebook-header-logo"
+              onClick={onLogoClick}
+            >
               <img src={Facebook} className="facebook-logo" />
             </Grid>
-            <Grid item lg justifyContent={"right"} display={"flex"}>
-              <Search />
-            </Grid>
+            {!hideExtras ? (
+              <Grid item lg justifyContent={"right"} display={"flex"}>
+                <Search />
+              </Grid>
+            ) : (
+              ""
+            )}
             <Grid item lg={3} justifyContent={"right"} display={"flex"}>
               <div className="facebook-header-icons">
                 <div className="facebook-header-icon-wrapper">

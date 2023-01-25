@@ -17,6 +17,13 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
   let history = useNavigate();
+  function getStorageUsername() {
+    return localStorage.getItem("username") || "";
+  }
+
+  function getStoragePassword() {
+    return localStorage.getItem("password") || "";
+  }
   function onCreateAccount() {
     if (userName !== "" && password !== "") {
       setErrorMsg("");
@@ -32,7 +39,10 @@ export default function Login() {
     console.log("on log in", userName);
     if (userName === "" || password === "") {
       setErrorMsg("Password or username can not be empty!");
-    } else if (userName === "ruchita123" && password === "abc123") {
+    } else if (
+      userName === getStorageUsername() &&
+      password === getStoragePassword()
+    ) {
       //
       history("/home");
       console.log("correct one");
