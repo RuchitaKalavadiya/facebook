@@ -1,4 +1,3 @@
-import SidebarList from "../appBar/SideBarList";
 import { styled } from "@mui/material/styles";
 import MuiDrawer from "@mui/material/Drawer";
 import { DrawerHeader } from "./DrawerHeaderComponent";
