@@ -1,4 +1,5 @@
 import {
+  Button,
   Dialog,
   DialogActions,
   DialogContent,
@@ -17,6 +18,7 @@ import { useState } from "react";
 import ButtonComponent from "./common/Button";
 import ConfirmationDialog from "./ConfirmationDialog";
 import "./style.css";
+import HideStoryDialog from "./HideStoryDialog";
 
 const StyledLabel = styled(
   FormControlLabel,
@@ -35,6 +37,7 @@ const StyledLabel = styled(
 
 const SettingDialog = ({ open, onDialogValueChange }) => {
   const [confirmationDialog, setConfirmationDialog] = useState(false);
+  const [hideStoryDialog, setHideStoryDialog] = useState(false);
 
   const handleClose = () => {
     console.log("close");
@@ -47,6 +50,13 @@ const SettingDialog = ({ open, onDialogValueChange }) => {
   const onConfirmationDialogChange = (newValue) => {
     setConfirmationDialog(newValue);
   };
+  const onHideStoryFromClick = () => {
+    setHideStoryDialog(true);
+  };
+  const onHideStoryDialogChange = (newValue) => {
+    setHideStoryDialog(newValue);
+  };
+
   return (
     <>
       <Dialog open={open} onClose={handleClose}>
@@ -100,7 +110,9 @@ const SettingDialog = ({ open, onDialogValueChange }) => {
               }}
             >
               <Typography>Hide story from</Typography>
-              <div>Next</div>
+              <Button variant="text" onClick={onHideStoryFromClick}>
+                Next
+              </Button>
             </Grid>
           </DialogContentText>
         </DialogContent>
@@ -118,6 +130,10 @@ const SettingDialog = ({ open, onDialogValueChange }) => {
       <ConfirmationDialog
         dialog={confirmationDialog}
         onDialogValueChange={onConfirmationDialogChange}
+      />
+      <HideStoryDialog
+        dialog={hideStoryDialog}
+        onDialogValueChange={onHideStoryDialogChange}
       />
     </>
   );
