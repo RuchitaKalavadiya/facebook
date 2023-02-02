@@ -5,6 +5,7 @@ import AppBarComponent from "./appBar";
 import DrawerComponent from "../Views/appBar/DrawerComponent";
 import { DrawerHeader } from "./appBar/DrawerHeaderComponent";
 import SidebarList from "./appBar/SideBarList";
+import Sponsored from "../Views/Sponsored";
 
 const Layout = ({ children }) => {
   const [open, setOpen] = React.useState(false);
@@ -16,12 +17,16 @@ const Layout = ({ children }) => {
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
       <AppBarComponent handleDrawer={handleDrawer} open={open} />
-      <DrawerComponent open={open} >
+      <DrawerComponent open={open}>
         <SidebarList />
       </DrawerComponent>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
         {children}
+      </Box>
+      <Box>
+        <DrawerHeader />
+        <Sponsored />
       </Box>
     </Box>
   );

@@ -1,42 +1,80 @@
 import Layout from "../FacebookWrapper";
 import {
-  Card,
   Tab,
   Box,
   Tabs,
   Typography,
   styled,
   Button,
-  Divider,
-  CardHeader,
-  CardContent,
+  Grid,
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { StyledCard } from "../../components/common/StyledCard";
+import PostCard from "../../components/common/PostCard";
+import CreateStoryTab from "./CreateStoryTab";
 
 export default function Home() {
   const [value, setValue] = useState(0);
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [page, setPage] = useState(1);
   let history = useNavigate();
+  const limit = 2;
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
-  const fetchPosts = async () => {
-    const response = await fetch(
-      "https://jsonplaceholder.typicode.com/photos?_page=0&_limit=10"
-    ).then((response) => response.json());
+  const onLoadMoreClick = () => {
+    setPage(page + 1);
+  };
 
-    setPosts(response);
-    setLoading(false);
+  const fetchMorePosts = async () => {
+    try {
+      if (page > 0) {
+        let response = await fetchPosts();
+        let data = posts;
+        data = [...data, ...response];
+        setPosts(data);
+      }
+    } catch (error) {
+      console.error({ error });
+    }
+  };
+
+  const fetchPosts = async () => {
+    try {
+      return await fetch(
+        `https://jsonplaceholder.typicode.com/photos?_page=${page}&_limit=${limit}`
+      ).then((response) => response.json());
+    } catch (error) {
+      setPosts([]);
+      console.error("[Failed at fetchPosts]", { error });
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
     setValue(0);
-    fetchPosts();
+    fetchInitialData();
+    return () => {
+      console.log("befor unmout");
+      setPage(1);
+      setPosts([]);
+    };
   }, []);
+
+  useEffect(() => {
+    console.log("page change here", page);
+    fetchMorePosts();
+  }, [page]);
+
+  const fetchInitialData = async () => {
+    let response = await fetchPosts();
+    setPosts(response);
+  };
 
   function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -68,16 +106,6 @@ export default function Home() {
     })
   );
 
-  const StyledCard = styled(
-    Card,
-    {}
-  )(() => ({
-    width: "670px",
-    display: "flex",
-    margin: "0 auto",
-    padding: "15px 20px",
-  }));
-
   const onCreateStory = () => {
     history("/stories/create");
   };
@@ -99,25 +127,7 @@ export default function Home() {
               </Tabs>
             </Box>
             <TabPanel value={value} index={0}>
-              <Card
-                sx={{ width: "15%", height: "150px", borderRadius: "12px" }}
-              >
-                <Typography variant="subtitle2" textAlign={"center"}>
-                  Create Story
-                  <Button
-                    variant="outlined"
-                    sx={{
-                      borderRadius: "50%",
-                      width: 25,
-                      height: 25,
-                      minWidth: 20,
-                    }}
-                    onClick={onCreateStory}
-                  >
-                    +
-                  </Button>
-                </Typography>
-              </Card>
+              <CreateStoryTab onClick={onCreateStory} />
             </TabPanel>
             <TabPanel value={value} index={1}>
               Reels
@@ -134,26 +144,19 @@ export default function Home() {
         )}
         {!loading &&
           posts.map((post) => {
-            return (
-              <StyledCard key={post.id} sx={{ marginTop: "15px" }}>
-                <CardContent sx={{ padding: 0, width: "100%" }}>
-                  <Typography variant="subtitle2" component="div">
-                    Recommended post
-                  </Typography>
-                  <Divider sx={{ width: "100%", margin: "8px 0" }} />
-                  <img
-                    src={post.url}
-                    alt={post.title}
-                    width="100%"
-                    height={"250px"}
-                    className="facebook-post-img"
-                    style={{ objectFit: "cover" }}
-                  />
-                  <Box>like comment share</Box>
-                </CardContent>
-              </StyledCard>
-            );
+            return <PostCard key={post.id} post={post} />;
           })}
+        {!loading && posts.length && (
+          <Grid display={"flex"} justifyContent="center" padding="15px 0">
+            <Button
+              variant="contained"
+              disableElevation
+              onClick={onLoadMoreClick}
+            >
+              Load more posts
+            </Button>
+          </Grid>
+        )}
       </Layout>
     </>
   );

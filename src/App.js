@@ -16,20 +16,13 @@ function App() {
     <Box
       sx={{
         backgroundColor: "#F0F2F5",
-        position: "absolute",
-        left: 0,
-        right: 0,
-        top: 0,
-        bottom: 0,
+        minHeight: "100vh",
       }}
     >
       <Routes>
         <Route path="/login" element={<Login />} />
-        <Route path="/" element={<Home />}>
-        </Route>
-        <Route path="/stories/create" element={<CreateStory />}>
-
-        </Route>
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/stories/create" element={<CreateStory />}></Route>
         <Route path="/user" element={<User />}></Route>
       </Routes>
     </Box>

@@ -24,9 +24,9 @@ const AppBar = styled(MuiAppBar, {
 
 const AppBarComponent = () => {
   return <>
-    <AppBar position='fixed' elevation="0">
+    <AppBar position='fixed' elevation={0}>
       <Toolbar>
-        <Grid lg justifyContent="end" display="flex">
+        <Grid lg item justifyContent="end" display="flex">
           <div className="facebook-header-icon-wrapper">
             <div className="facebook-header-icon">
               <Notification />

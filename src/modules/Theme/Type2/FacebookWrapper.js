@@ -7,11 +7,11 @@ import { DrawerHeader } from "../../Views/appBar/DrawerHeaderComponent";
 
 const Layout2 = ({ children }) => {
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex", minHeight: "100vh" }}>
       <CssBaseline />
       <AppBarComponent />
       <DrawerComponent />
-      <Box component="main" sx={{ height: '100%', width: '100%' }}>
+      <Box component="main" sx={{ width: "100%" }}>
         <DrawerHeader />
         {children}
       </Box>
