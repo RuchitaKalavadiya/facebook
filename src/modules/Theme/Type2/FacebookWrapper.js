@@ -12,7 +12,7 @@ const Layout2 = ({ children }) => {
       <CssBaseline />
       <AppBarComponent />
       <DrawerComponent />
-      <Box component="main">
+      <Box component="main" sx={{ height: '100%', width: '100%' }}>
         <DrawerHeader />
         {children}
       </Box>

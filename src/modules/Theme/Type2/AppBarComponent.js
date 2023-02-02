@@ -7,7 +7,6 @@ import user from "../../../assets/user.jpg";
 const AppBar = styled(MuiAppBar, {
     shouldForwardProp: (prop) => prop !== 'open',
 })(({ theme, open }) => ({
-    zIndex: theme.zIndex.drawer + 1,
     background: 'transparent',
     transition: theme.transitions.create(['width', 'margin'], {
         easing: theme.transitions.easing.sharp,
@@ -26,9 +25,9 @@ const AppBar = styled(MuiAppBar, {
 
 const AppBarComponent = () => {
     return <>
-        <AppBar position='fixed' elevation="0">
+        <AppBar position='fixed' elevation={0}>
             <Toolbar>
-                <Grid lg justifyContent="end" display="flex">
+                <Grid item lg justifyContent="end" display="flex">
                     <div className="facebook-header-icon-wrapper">
                         <div className="facebook-header-icon">
                             <Notification />

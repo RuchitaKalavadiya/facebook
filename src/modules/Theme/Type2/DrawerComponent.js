@@ -6,6 +6,8 @@ import user from "../../../assets/user.jpg";
 import { Divider, Typography } from "@mui/material";
 import closeIcon from "../../../assets/closeIcon.svg";
 import setting from "../../../assets/setting.svg";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const drawerWidth = '290px';
 
@@ -17,26 +19,40 @@ const Drawer = styled(MuiDrawer, {
     boxSizing: "border-box",
 }));
 
+
 const DrawerComponent = () => {
+    let history = useNavigate();
+    const [dialog, setDialog] = useState(false)
+
+    onCloseIconClick = () => {
+        history("/");
+    }
+
+    onSettingClick = () => {
+        setDialog(true)
+    }
     return (
         <>
             <Drawer variant="permanent" elevation={1}>
                 <Box padding="10px 20px" width={drawerWidth}>
-                    <Box display="flex" alignItems="center" elevation='1'>
-                        <div
+                    <Box display="flex" alignItems="center" elevation={1}>
+                        <Box
                             style={{
                                 display: "flex",
                                 alignItems: "center",
-                                border: "1px solid",
                                 height: "40px",
                                 width: "40px",
                                 justifyItems: "center",
                                 justifyContent: "center",
                                 borderRadius: "50%",
+
+
                             }}
+                            sx={{ cursor: 'pointer', background: '#e3e3e3' }}
+                            onClick={onCloseIconClick}
                         >
                             <img src={closeIcon} alt="close-icon" height="25px" />
-                        </div>
+                        </Box>
                         <img
                             src={fbSmall}
                             alt="facebook-logo"
@@ -46,7 +62,10 @@ const DrawerComponent = () => {
                     </Box>
                     <Box display='flex' padding='25px 0' justifyContent='space-between' alignItems='center'>
                         <Typography variant="h6" fontWeight="bold">Your Story</Typography>
-                        <img src={setting} height="20px" />
+                        <Box sx={{ height: "30px", width: '30px', borderRadius: '50%', background: '#e3e3e3', padding: '5px' }} onClick={onSettingClick}>
+                            <img src={setting} />
+
+                        </Box>
                     </Box>
 
                     <Box display="flex">
