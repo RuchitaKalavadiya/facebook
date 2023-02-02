@@ -15,7 +15,6 @@ const CreateStory = () => {
     <>
       <FacebookWrapper>
         <Box sx={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
-
           <ServiceCard sx={{ marginRight: '20px' }}>
             Create a photo story
           </ServiceCard>
