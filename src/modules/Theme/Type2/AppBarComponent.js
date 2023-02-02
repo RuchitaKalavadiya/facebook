@@ -1,45 +1,44 @@
-import MuiAppBar from '@mui/material/AppBar';
+import MuiAppBar from "@mui/material/AppBar";
 import { Notification } from "../../../assets/headerLogo.jsx";
-import { Toolbar, styled, Grid } from '@mui/material';
+import { Toolbar, styled, Grid } from "@mui/material";
 import user from "../../../assets/user.jpg";
 
-
 const AppBar = styled(MuiAppBar, {
-    shouldForwardProp: (prop) => prop !== 'open',
+  shouldForwardProp: (prop) => prop !== "open",
 })(({ theme, open }) => ({
-    background: 'transparent',
+  background: 'transparent',
+  transition: theme.transitions.create(['width', 'margin'], {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.leavingScreen,
+  }),
+  color: 'darkslategray',
+  ...(open && {
+    width: '100%',
     transition: theme.transitions.create(['width', 'margin'], {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.leavingScreen,
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen,
     }),
-    color: 'darkslategray',
-    ...(open && {
-        width: '100%',
-        transition: theme.transitions.create(['width', 'margin'], {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.enteringScreen,
-        }),
-    }),
+  }),
 }));
 
 
 const AppBarComponent = () => {
-    return <>
-        <AppBar position='fixed' elevation={0}>
-            <Toolbar>
-                <Grid item lg justifyContent="end" display="flex">
-                    <div className="facebook-header-icon-wrapper">
-                        <div className="facebook-header-icon">
-                            <Notification />
-                        </div>
-                    </div>
-                    <div className="facebook-header-icon-wrapper">
-                        <img src={user} className="facebook-header-user" alt='facebook-header-user' />
-                    </div>
-                </Grid>
-            </Toolbar>
-        </AppBar>
-    </>
+  return <>
+    <AppBar position='fixed' elevation="0">
+      <Toolbar>
+        <Grid lg justifyContent="end" display="flex">
+          <div className="facebook-header-icon-wrapper">
+            <div className="facebook-header-icon">
+              <Notification />
+            </div>
+          </div>
+          <div className="facebook-header-icon-wrapper">
+            <img src={user} className="facebook-header-user" alt='facebook-header-user' />
+          </div>
+        </Grid>
+      </Toolbar>
+    </AppBar>
+  </>
 }
 
 export default AppBarComponent

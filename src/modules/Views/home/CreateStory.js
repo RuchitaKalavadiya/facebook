@@ -2,7 +2,6 @@ import { Card, styled } from "@mui/material";
 import { Box } from "@mui/system";
 import FacebookWrapper from "../../Theme/Type2/FacebookWrapper";
 
-
 const CreateStory = () => {
   const ServiceCard = styled(Card, {})(() => ({
     width: '200px',

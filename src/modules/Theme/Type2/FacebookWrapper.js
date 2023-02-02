@@ -6,7 +6,6 @@ import DrawerComponent from "../Type2/DrawerComponent";
 import { DrawerHeader } from "../../Views/appBar/DrawerHeaderComponent";
 
 const Layout2 = ({ children }) => {
-
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
