@@ -66,5 +66,6 @@
 
 .facebooke-seach-icon {
   width: 15px;
-  margin-right: 8px;
+  margin: 0 8px;
+  display: flex;
 }

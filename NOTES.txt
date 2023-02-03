@@ -2,6 +2,11 @@
 - dont know hoe to make container fluid
 - how to center one col element
 
+- chat functionality
+- hooks
+- methods
+- lazy loading 
+
 
 [core]
 	repositoryformatversion = 0
