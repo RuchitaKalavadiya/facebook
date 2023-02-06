@@ -1,6 +1,6 @@
-import { Toolbar, IconButton, Typography, styled, Grid } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
+import { Toolbar, styled, Grid } from "@mui/material";
 import MuiAppBar from "@mui/material/AppBar";
+import { useNavigate } from "react-router-dom";
 import Facebook from "../../../assets/facebook.png";
 import { Message, Notification } from "../../../assets/headerLogo.jsx";
 import user from "../../../assets/user.jpg";
@@ -26,26 +26,30 @@ const AppBar = styled(MuiAppBar, {
 }));
 
 export default function AppBarComponent({ handleDrawer, open }) {
+  let history = useNavigate();
+  const onHomeClick = () => {
+    history("/home");
+  };
   return (
     <>
       <AppBar position="fixed" open={open} elevation={1}>
         <Toolbar>
-          <IconButton
-            color="#000"
-            aria-label="open drawer"
-            onClick={handleDrawer}
-            edge="start"
-            sx={{
-              marginRight: 5,
-            }}
-          >
-            <MenuIcon />
-          </IconButton>
           <Grid container>
-            <Grid item lg={3} alignItems={"center"} display={"flex"}>
-              <img src={Facebook} className="facebook-logo" />
+            <Grid
+              item
+              lg={3}
+              alignItems={"center"}
+              display={"flex"}
+              sx={{ curser: "pointer" }}
+            >
+              <img
+                src={Facebook}
+                className="facebook-logo"
+                alt="facebook-logo"
+                onClick={onHomeClick}
+              />
             </Grid>
-            <Grid item lg justifyContent={"right"} display={"flex"}>
+            <Grid item lg display={"flex"}>
               <Search />
             </Grid>
             <Grid item lg={3} justifyContent={"right"} display={"flex"}>
@@ -61,7 +65,11 @@ export default function AppBarComponent({ handleDrawer, open }) {
                   </div>
                 </div>
                 <div className="facebook-header-icon-wrapper">
-                  <img src={user} className="facebook-header-user" />
+                  <img
+                    src={user}
+                    className="facebook-header-user"
+                    alt="facebook-header-user"
+                  />
                 </div>
               </div>
             </Grid>

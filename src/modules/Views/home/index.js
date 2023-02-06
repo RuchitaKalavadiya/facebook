@@ -112,7 +112,7 @@ export default function Home() {
 
   return (
     <>
-      <Layout>
+      <Layout open={true}>
         <StyledCard>
           <Box width={"100%"}>
             <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
@@ -147,7 +147,11 @@ export default function Home() {
             return <PostCard key={post.id} post={post} />;
           })}
         {!loading && posts.length && (
-          <Grid display={"flex"} justifyContent="center" padding="15px 0">
+          <Grid
+            display={"flex"}
+            justifyContent="center"
+            padding="15px 0"
+          >
             <Button
               variant="contained"
               disableElevation

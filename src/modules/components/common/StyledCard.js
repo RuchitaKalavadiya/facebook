@@ -6,6 +6,8 @@ export const StyledCard = styled(
 )(() => ({
   width: "670px",
   display: "flex",
-  margin: "0 auto",
+  // margin: "0 auto",
+  left: "290px",
+  position: "relative",
   padding: "15px 20px",
 }));

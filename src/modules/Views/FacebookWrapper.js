@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
 import AppBarComponent from "./appBar";
@@ -7,18 +8,19 @@ import { DrawerHeader } from "./appBar/DrawerHeaderComponent";
 import SidebarList from "./appBar/SideBarList";
 import Sponsored from "../Views/Sponsored";
 
-const Layout = ({ children }) => {
-  const [open, setOpen] = React.useState(false);
-  const handleDrawer = () => {
-    setOpen(!open);
-  };
+const Layout = ({ open, children }) => {
+  let history = useNavigate();
+  function onMenuItemClick(path) {
+    console.log(path);
+    history(`/${path}`);
+  }
 
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <AppBarComponent handleDrawer={handleDrawer} open={open} />
+      <AppBarComponent open={open} />
       <DrawerComponent open={open}>
-        <SidebarList />
+        <SidebarList onMenuItemClick={onMenuItemClick} />
       </DrawerComponent>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
@@ -26,7 +28,7 @@ const Layout = ({ children }) => {
       </Box>
       <Box>
         <DrawerHeader />
-        <Sponsored />
+        <Sponsored sx={{ right: 0 }} />
       </Box>
     </Box>
   );

@@ -6,6 +6,7 @@
 - hooks
 - methods
 - lazy loading 
+- manual pagination
 
 
 [core]

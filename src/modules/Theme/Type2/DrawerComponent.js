@@ -83,7 +83,12 @@ const DrawerComponent = () => {
               }}
               // onClick={onSettingClick}
             >
-              <img src={setting} height="20px" onClick={onSettingClick} />
+              <img
+                src={setting}
+                height="20px"
+                onClick={onSettingClick}
+                alt="setting"
+              />
             </Box>
           </Box>
           <Box display="flex">
@@ -95,7 +100,7 @@ const DrawerComponent = () => {
                 overflow: "hidden",
               }}
             >
-              <img src={user} className="" />
+              <img src={user} alt="user" className="" />
             </div>
             <Box
               display={"flex"}
