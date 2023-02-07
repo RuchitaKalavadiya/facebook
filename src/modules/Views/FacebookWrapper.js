@@ -8,7 +8,7 @@ import { DrawerHeader } from "./appBar/DrawerHeaderComponent";
 import SidebarList from "./appBar/SideBarList";
 import Sponsored from "../Views/Sponsored";
 
-const Layout = ({ open, children }) => {
+const Layout = ({ open, children, hideSponsered, showSmallSearch }) => {
   let history = useNavigate();
   function onMenuItemClick(path) {
     console.log(path);
@@ -18,7 +18,7 @@ const Layout = ({ open, children }) => {
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <AppBarComponent open={open} />
+      <AppBarComponent open={open} showSmallSearch={showSmallSearch} />
       <DrawerComponent open={open}>
         <SidebarList onMenuItemClick={onMenuItemClick} />
       </DrawerComponent>
@@ -28,7 +28,7 @@ const Layout = ({ open, children }) => {
       </Box>
       <Box>
         <DrawerHeader />
-        <Sponsored sx={{ right: 0 }} />
+        {!hideSponsered && <Sponsored sx={{ right: 0 }} />}
       </Box>
     </Box>
   );

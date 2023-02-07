@@ -2,9 +2,14 @@ import { Toolbar, styled, Grid } from "@mui/material";
 import MuiAppBar from "@mui/material/AppBar";
 import { useNavigate } from "react-router-dom";
 import Facebook from "../../../assets/facebook.png";
-import { Message, Notification } from "../../../assets/headerLogo.jsx";
+import {
+  Message,
+  Notification,
+  SearchLogo,
+} from "../../../assets/headerLogo.jsx";
 import user from "../../../assets/user.jpg";
 import Search from "../header/search";
+import "../../styles/styles.css";
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== "open",
@@ -25,7 +30,11 @@ const AppBar = styled(MuiAppBar, {
   }),
 }));
 
-export default function AppBarComponent({ handleDrawer, open }) {
+export default function AppBarComponent({
+  handleDrawer,
+  open,
+  showSmallSearch,
+}) {
   let history = useNavigate();
   const onHomeClick = () => {
     history("/home");
@@ -34,10 +43,9 @@ export default function AppBarComponent({ handleDrawer, open }) {
     <>
       <AppBar position="fixed" open={open} elevation={1}>
         <Toolbar>
-          <Grid container>
+          <Grid container justifyContent={"space-between"} alignItems="center">
             <Grid
               item
-              lg={3}
               alignItems={"center"}
               display={"flex"}
               sx={{ curser: "pointer" }}
@@ -49,10 +57,21 @@ export default function AppBarComponent({ handleDrawer, open }) {
                 onClick={onHomeClick}
               />
             </Grid>
-            <Grid item lg display={"flex"}>
-              <Search />
-            </Grid>
-            <Grid item lg={3} justifyContent={"right"} display={"flex"}>
+            {showSmallSearch ? (
+              <Grid sm item marginLeft="20px" className="facebooke-seach-icon">
+                <div className="facebook-header-icon-wrapper">
+                  <div className="facebook-header-icon">
+                    <SearchLogo />
+                  </div>
+                </div>
+              </Grid>
+            ) : (
+              <Grid item lg display={"flex"}>
+                <Search />
+              </Grid>
+            )}
+
+            <Grid justifyContent={"right"} display={"flex"}>
               <div className="facebook-header-icons">
                 <div className="facebook-header-icon-wrapper">
                   <div className="facebook-header-icon">
