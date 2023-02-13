@@ -15,6 +15,7 @@ function App() {
   }, []);
   return (
     <Box
+      className="facebook-site-wrapper"
       sx={{
         backgroundColor: "#F0F2F5",
         minHeight: "100vh",
