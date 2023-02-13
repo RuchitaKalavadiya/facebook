@@ -1,7 +1,12 @@
+.facebook-site-wrapper {
+  background-color: #FFF !important;
+}
+
 .facebook-cover-photo {
   height: 450px;
   top: -30px;
-  position: relative;
+  background-color: #e3e3e3 !important;
+  width: 100%;
 }
 
 .cover-photo-edit-btn {
@@ -22,4 +27,11 @@
   width: 175px;
   border-radius: 50%;
   border: 4px solid #fff;
+}
+
+.profile-tabs {
+  position: absolute;
+  bottom: -235px;
+  left: 0;
+  right: 0;
 }
